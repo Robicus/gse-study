@@ -19,4 +19,15 @@ Wireshark's "Statistics" menu items serve as a great starting point when jumping
 Statistics > Protocol Hierarchy
 ```
 
-![Alt text](/relative/path/to/img.jpg?raw=true "Optional Title")
+![Protocol Hierarchy](/analyze-traffic-wireshark-statistics.PNG?raw=true "Protocol Hierarchy")
+
+### Finding a packet
+
+```
+Edit > Find Packet ... (or Ctrl + F)
+```
+
+It's a good idea to select the radio button "Packet bytes" in order to search for the string or hex value within the payload.
+
+![Find Packet](/analyze-traffic-find-packet.PNG?raw=true "Find Packet")
+
