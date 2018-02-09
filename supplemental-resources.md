@@ -1,8 +1,9 @@
 # Supplemental Resources
 
-## Blogs & Shared Insights
+## Blogs, Shared Insights & PCAP Respositories
 
 http://carybarker.com/2015/12/starting-study-plan-for-gse-2-day-lab/
+http://contagiodump.blogspot.com/2013/04/collection-of-pcap-files-from-malware.html
 
 ## Challenges & Hands-on Practice
 

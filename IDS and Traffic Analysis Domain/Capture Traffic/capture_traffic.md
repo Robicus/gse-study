@@ -1,8 +1,8 @@
 # Wireshark
 
-## 503 Books
+## Exam Objectives
 
-* Introduction to Wireshark - Book 1, Page 45
+Demonstrate competence with common IDS tools and techniques for capturing traffic.
 
 
 
