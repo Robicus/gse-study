@@ -8,9 +8,11 @@ http://contagiodump.blogspot.com/2013/04/collection-of-pcap-files-from-malware.h
 ## Challenges & Hands-on Practice
 
 http://digital-forensics.sans.org/community/challenges/
+http://www.malware-traffic-analysis.net/index.html
 http://forensicscontest.com/puzzles
 https://enterprise.cloudshark.org/categories/capture-challenge/
 http://www.netresec.com/?page=PcapFiles
+http://chrissanders.org/packet-captures/
 
 ## Cheat Sheets
 
