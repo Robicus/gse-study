@@ -41,4 +41,6 @@ For example, there is a tab called, "503 Lab Practice".  Inside, there is a tabl
 
 ![Study Template](/Other/screenshots/study-template.PNG?raw=true "Study Template")
 
+** Note: The template spreadsheet only contains the 503 exercises.  Still need to add catalog all exercises for 401 and 504.
+
 
