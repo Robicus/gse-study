@@ -3,6 +3,7 @@
 ## Blogs, Shared Insights & PCAP Respositories
 
 * http://contagiodump.blogspot.com/2013/04/collection-of-pcap-files-from-malware.html
+* http://chrissanders.org/packet-captures/
 
 ## Challenges & Hands-on Practice
 
@@ -11,7 +12,6 @@
 * http://forensicscontest.com/puzzles
 * https://enterprise.cloudshark.org/categories/capture-challenge/
 * http://www.netresec.com/?page=PcapFiles
-* http://chrissanders.org/packet-captures/
 
 ## Cheat Sheets
 
