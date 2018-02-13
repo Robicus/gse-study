@@ -21,4 +21,8 @@ snort -r cmdexe.pcap -K none -A console -q -c snort.conf1
 -q quiet mode, doesn't show banner nor status report
 -c specified the rules
 
+## Snort Signature Example
+
+![Snort Sig Example](../screenshots/snort-sig-example.PNG?raw=true "Snort Sig Example")
+
 
