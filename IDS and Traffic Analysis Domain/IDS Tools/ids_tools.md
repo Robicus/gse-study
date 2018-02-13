@@ -11,9 +11,9 @@ Demonstrate proficiency using common Open Source IDS tools including Snort, tcpd
 ## Snort Usage and Common Flags
 
 Example:
-'''
+```
 snort -r cmdexe.pcap -K none -A console -q -c snort.conf1
-'''
+```
 
 -r reads the specified file
 -K logging mode
