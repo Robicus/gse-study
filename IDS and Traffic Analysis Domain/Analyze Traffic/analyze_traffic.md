@@ -4,6 +4,12 @@
 
 Demonstrate the ability to decipher the contents of packet capture headers.
 
+## Common Protocol Diagrams
+
+### IP Headers
+
+![IP Header](../screenshots/ip-header.PNG?raw=true "IP Header")
+
 ## Analyze Traffic w/ Wireshark
 
 ### Great tips for organizing views/columns/data in Wireshark

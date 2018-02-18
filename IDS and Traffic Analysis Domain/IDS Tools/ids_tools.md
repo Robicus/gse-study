@@ -43,7 +43,7 @@ alert udp $EXTERNAL_NET any -> $HOME_NET 67 (msg:"MISC bootp hardware address le
 ### Running Bro in Readback Mode
 
 ```
-bro -4 /path/to/.pcap
+bro -r /path/to/.pcap
 ```
 
 As a result of running Bro against a pcap (.pcap) file, multiple bro files are created in the working directory:
@@ -60,6 +60,32 @@ As a result of running Bro against a pcap (.pcap) file, multiple bro files are c
 * syslog.log
 * weird.log
 * x509.log
+
+### Bro Command Line Fu
+
+What connection had the largest number of bytes returned? How many bytes were returned?
+
+```
+cat conn.log | bro-cut id.org_h id.resp_h id.resp_p resp_bytes | sort -k 4 -rn | head -10
+```
+
+### Start Bro
+
+```
+broctl [as root]
+```
+
+```
+install
+```
+
+```
+start
+```
+
+```
+status
+```
 
 
 
