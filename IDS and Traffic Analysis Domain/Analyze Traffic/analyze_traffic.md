@@ -63,6 +63,12 @@ rwstats --fields sIP --bytes --count=5
 
 ### Creating a frame with ICMP
 
-![Scapy - Create Frame(../screenshots/scapy-create-frame.PNG?raw=true "Scapy - Create Frame")
+![Scapy - Create Frame](../screenshots/scapy-create-frame.PNG?raw=true "Scapy - Create Frame")
+
+Saving a created packet to disk:
+
+```
+wrpcap("/tmp/icmp.pcap". frame)
+```
 
 
