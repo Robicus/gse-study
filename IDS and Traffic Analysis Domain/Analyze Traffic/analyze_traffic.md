@@ -45,4 +45,24 @@ It's a good idea to select the radio button "Packet bytes" in order to search fo
 
 ![Find Packet](../screenshots/analyze-traffic-find-packet.PNG?raw=true "Find Packet")
 
-Change...
+### Working with SiLK
+
+Counting the number of records:
+
+```
+rwfilter suspicious.silk --proto=0-255 --print-stat
+```
+
+Looking for top (5) senders of data (bytes):
+
+```
+rwstats --fields sIP --bytes --count=5
+```
+
+## Scapy
+
+### Creating a frame with ICMP
+
+![Scapy - Create Frame(../screenshots/scapy-create-frame.PNG?raw=true "Scapy - Create Frame")
+
+

@@ -8,7 +8,7 @@ Demonstrate a solid understanding of TCP/IP, UDP, ICMP, DNS, and other common pr
 
 ![IP Header](../screenshots/ip-header.PNG?raw=true "IP Header")
 
-![TCP Header](../screenshots/ip-header.PNG?raw=true "TCP Header")
+![TCP Header](../screenshots/tcp-header.PNG?raw=true "TCP Header")
 
 ### UDP
 
