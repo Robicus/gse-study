@@ -71,4 +71,13 @@ Saving a created packet to disk:
 wrpcap("/tmp/icmp.pcap". frame)
 ```
 
+Send crafted packet:
+
+```
+send(packet_object)
+```
+
+
+
+
 
