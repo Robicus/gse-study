@@ -50,6 +50,12 @@ ls
 ls -la
 ```
 
+Copying Files:
+
+```
+cp /etc/shadow /tmp/shadow_copy
+```
+
 
 
 
