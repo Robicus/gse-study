@@ -144,7 +144,19 @@ hashdump
 run hashdump
 ```
 
+### Volatility
 
+Getting usage and help
+
+```
+python vol.py -h
+```
+
+Getting process list:
+
+```
+python vol.py pslist -f /path/to/memory/dump/mem.dd --profile=Win7SP0x86
+```
 
 ### etc...
 
