@@ -40,7 +40,7 @@ nc.exe 10.10.75.75 7777
 
 ### p0f
 
-### Joghn the Ripper
+### John the Ripper
 
 John the Ripper is essentially a password cracking tool.  You can utilize John the Ripper to perform password cracking once you've retrieved password hashes from a target.
 
@@ -157,6 +157,29 @@ Getting process list:
 ```
 python vol.py pslist -f /path/to/memory/dump/mem.dd --profile=Win7SP0x86
 ```
+
+### Hping3
+Hping3 is a command-line packet analyzer that supports the TCP, UDP, ICMP, and RAW-IP protocols.
+
+```
+hping3 --help
+```
+
+Running hping3 with TCP SYN flags:
+
+```
+hping3 -S [IP address]
+```
+
+Running hping3 with TCP SYNC flags and a spoofed source address:
+
+```
+hping3 [IP Address] -a [spoofed IP] -S
+```
+
+
+
+
 
 ### etc...
 
