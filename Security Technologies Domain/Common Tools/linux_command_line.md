@@ -56,6 +56,18 @@ Copying Files:
 cp /etc/shadow /tmp/shadow_copy
 ```
 
+Creating a file:
+
+```
+touch [filename]
+```
+
+Renaming a file:
+
+```
+mv [file1.txt] [file2.txt]
+```
+
 
 
 

@@ -15,7 +15,7 @@ The repo is a collection of directories and files (.md) that align to the GIAC G
 
 4. Security Technologies Domain
 
-5. Soft Skills Domain.  
+5. Soft Skills Domain
 
 Each of these primary categories are further broken down into specific sub-categories.  For example, the IDS and Traffic Analysis Domain is broken down into the following:  Capture Traffic, Analyze Traffic, Interpret Traffic, and IDS Tools.
 
@@ -40,7 +40,5 @@ There is a spreadsheet entitled, "study-log-template.xlsx" that sits in the repo
 For example, there is a tab called, "503 Lab Practice".  Inside, there is a table that has every lab exercise broken down to the exact topic in which it covers.  There are columns for you to track when you completed the exercises, and for you to capture how well performed for each exercise topic:
 
 ![Study Template](/Other/screenshots/study-template.PNG?raw=true "Study Template")
-
-** Note: The template spreadsheet only contains the 503 exercises.  Still need to add catalog all exercises for 401 and 504.
 
 
