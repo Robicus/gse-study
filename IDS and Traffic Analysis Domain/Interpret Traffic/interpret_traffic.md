@@ -4,6 +4,11 @@
 
 Make correct judgments as to the nature of traffic to or from specific hosts in packet captures.
 
+### Supplemtal Resources:
+
+Network Forensics w/ Wireshark video:
+https://www.youtube.com/watch?v=UXAHvwouk6Q
+
 ### Looking at ICMP tunneling:
 
 ![ICMP Tunneling](../screenshots/interpret-traffic-icmp-tunneling.PNG?raw=true "ICMP Tunneling")

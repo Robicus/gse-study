@@ -81,6 +81,14 @@ Ping is the defacto tool for testing TCP/IP routing and availability from one ho
 ping [IP address]
 ```
 
+### Tracert and route commands
+
+Tracert (trace route) is a great way of determining the hops between two points. The utility makes use of ICMP echo packets and routers' subsequent decrementing of TTL values to calculate and measure eachho along the network path.
+
+```
+tracert [IP address]
+```
+
 ## Filesystem Stuff + Navigation
 
 Switching directories
