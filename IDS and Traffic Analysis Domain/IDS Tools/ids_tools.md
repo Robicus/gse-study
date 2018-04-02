@@ -38,6 +38,21 @@ alert udp $EXTERNAL_NET any -> $HOME_NET 67 (msg:"MISC bootp hardware address le
 
 ![Snort Sig Example](../screenshots/snort-sig-example.PNG?raw=true "Snort Sig Example")
 
+## tcpdump
+
+Reading a capture:
+
+```
+tcpdump -r [capture.pcap]
+```
+
+Reading a capture without converting addresses (-n), without printing timestamps, with even more verbose output.
+
+```
+tcpdump -n -t -vv -r [capture.pcap]
+```
+
+
 ## Bro
 
 ### Running Bro in Readback Mode

@@ -96,6 +96,33 @@ cat [file] | grep "pattern" -A [number of lines]
 cat [file] | grep "pattern" -B [number of lines]
 ```
 
+### Working with vim text editor
+
+Vim (vi improved) is a powerful and popular text editor.
+
+Creating and editing a new file:
+
+```
+vim [filename]
+```
+
+Begin writing/editing the file:
+
+```
+i
+```
+
+Typing the letter "i" puts you into "Insert" mode, which will be indicated in the bottom-left of the vim editor (called the status).
+
+Use the ":" (colon) key to enter the command mode that allows your to manipulate vim.
+
+Writing and quiting a file:
+
+```
+:wq
+```
+
+
 
 
 
