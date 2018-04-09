@@ -4,11 +4,15 @@
 
 Demonstrate the ability to decipher the contents of packet capture headers.
 
-## Common Protocol Diagrams
+### Five Tips for Decoding Packets
 
-### IP Headers
+1. Offsets from the beginning of the packet start with 0
+2. Four bits = 1 hex character
+3. One bytes = 2 hex characters
+4. Fields can be any length (one bit, many bytes, fixed length or variable length)
+5. Fields in one protocol identify the length and contents of others
 
-![IP Header](../screenshots/ip-header.PNG?raw=true "IP Header")
+Source: 401.1 pg. 152
 
 ## Analyze Traffic w/ Wireshark
 
@@ -108,6 +112,24 @@ Send crafted packet:
 ```
 send(packet_object)
 ```
+
+### Analyzing User Agent Stings
+
+It's important to correlate host operating systems (OS) versions based on the user-agent strings observed in web traffic.
+
+An example user agent string:
+Mozilla/5.0 (Windows NT 6.1; Trident/7.0; rv:11.0) like Gecko
+
+Windows NT 6.1 correlates to Windows 7.
+
+List of Windows NT versions to OS:
+
+6.0	Windows Vista	
+6.1 Windows 
+6.2	Windows 8
+6.3	Windows 8.1
+10.0 Windows 10 / Server 2016
+
 
 
 

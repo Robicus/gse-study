@@ -6,7 +6,7 @@ Demonstrate proficiency using common Open Source IDS tools including Snort, tcpd
 
 ## tcpdump Cheat Sheet
 
-* http://packetlife.net/media/library/12/tcpdump.pdf
+http://packetlife.net/media/library/12/tcpdump.pdf
 
 ## Snort Usage and Common Flags
 
@@ -46,12 +46,35 @@ Reading a capture:
 tcpdump -r [capture.pcap]
 ```
 
+Specifying the interface to listen on:
+
+```
+tcpdump -i lo
+```
+
+Specifying the nmer of packets to capture:
+
+```
+tcpdump -i lo -c 5
+```
+
 Reading a capture without converting addresses (-n), without printing timestamps, with even more verbose output.
 
 ```
 tcpdump -n -t -vv -r [capture.pcap]
 ```
 
+Displaying hex (lowercase "x"):
+
+```
+tcpdump -x
+```
+
+Displaying hex and ASCII (capitalized "X"):
+
+```
+tcpdump -X
+```
 
 ## Bro
 

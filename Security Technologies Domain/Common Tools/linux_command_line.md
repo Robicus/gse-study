@@ -96,6 +96,44 @@ cat [file] | grep "pattern" -A [number of lines]
 cat [file] | grep "pattern" -B [number of lines]
 ```
 
+### Viewing and Searching Processes
+
+```
+ps -eaf
+ps -eaf | grep crypto
+```
+
+### Working with tar and file compression
+
+tar a folder/file:
+
+```
+tar -cf [file[s] or folder]
+```
+
+untar (extract):
+
+```
+tar -xf [file[s] or folder]
+```
+
+gzip a folder/file:
+
+```
+gzip [folder/file]
+```
+
+Unzip a compressed gzip:
+
+```
+gunzip [folder/file]
+```
+
+bzip2
+
+unbiz2
+
+
 ### Working with vim text editor
 
 Vim (vi improved) is a powerful and popular text editor.
