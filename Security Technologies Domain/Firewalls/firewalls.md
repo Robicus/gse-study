@@ -4,6 +4,19 @@
 
 Demonstrate competence with firewalls.
 
+## Firewalls Overview
+
+Reference:  401.2, pg. 110 (Module 15)
+Reference:  401.5, Module 27
+
+Built-in and free firewall that has full state dynamic filtering, with per-application and per-service filtering, and entails ingress/egress filtering.  However, no centralized logging and complex to manage.
+
+Three network profiles:
+
+1. Domain
+2. Public
+3. Private
+
 ## Windows Firewall
 
 Good reading sources:
@@ -11,8 +24,6 @@ http://www.itsecure.hu/library/file/Biztons%C3%A1gi%20%C3%BAtmutat%C3%B3k/Egy%C3
 
 Understanding 'netsh firewall' versus 'netsh advfirewall':
 https://support.microsoft.com/en-us/help/947709/how-to-use-the-netsh-advfirewall-firewall-context-instead-of-the-netsh
-
-
 
 ### Windows Firewall via the Command Line
 

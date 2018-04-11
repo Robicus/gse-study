@@ -56,6 +56,10 @@ Running John is trival:
 ./john /tmp/combined
 ```
 
+### Cain & Abel
+
+Cain & Abel is an auditing tool that can be used for testing the strength of passwords on Windows machines.
+
 ### Metasploit
 
 Starting Metasploit:
@@ -159,6 +163,7 @@ python vol.py pslist -f /path/to/memory/dump/mem.dd --profile=Win7SP0x86
 ```
 
 ### Hping3
+
 Hping3 is a command-line packet analyzer that supports the TCP, UDP, ICMP, and RAW-IP protocols.
 
 ```
@@ -171,14 +176,15 @@ Running hping3 with TCP SYN flags:
 hping3 -S [IP address]
 ```
 
-Running hping3 with TCP SYNC flags and a spoofed source address:
+Running hping3 with TCP SYN flags and a spoofed source address:
 
 ```
 hping3 [IP Address] -a [spoofed IP] -S
 ```
 
+### Dumpsec
 
-
+Dumpsec gathers information about a remote host without providing valid authentication; you gain info on registry, file system, and printers; users and groups; policies, rights, and services.
 
 
 ### etc...

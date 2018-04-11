@@ -4,7 +4,17 @@
 
 Demonstrate mastery of the Incident Handling process.
 
-### 6 Phases of Incident Reponse (IR)
+### Incident Handling Fundamentals
+
+What is an "incident"?
+
+An adverse event in an information system, and/or network, or the threat of the occurence of such an event.
+
+What is an "event"?
+
+An event is any observable occurrence in a system and/or network.
+
+### 6 Phases of Incident Response (IR)
 
 1. Preparation
 2. Identification
