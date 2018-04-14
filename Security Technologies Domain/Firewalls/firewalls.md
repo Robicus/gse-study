@@ -83,3 +83,8 @@ Show firewall rules in all chains:
 # iptables -t raw -nL
 ```
 
+Turning off Linux firewall:
+
+```
+iptables -F
+```

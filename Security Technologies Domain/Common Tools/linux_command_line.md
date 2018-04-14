@@ -103,6 +103,12 @@ ps -eaf
 ps -eaf | grep crypto
 ```
 
+### Changing IP address and networking data
+
+```
+ifconfig [interface] [IP Address] netmask [netmask]
+```
+
 ### Working with tar and file compression
 
 tar a folder/file:

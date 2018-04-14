@@ -29,6 +29,12 @@ Listing DNS information
 ipconfig /displaydns
 ```
 
+Changing IP address:
+
+```
+[Windows network control panel]
+```
+
 ### netstat
 
 Use netstat to display active TCP connections, information on ports, and other protocol statistics.
