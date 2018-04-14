@@ -91,7 +91,7 @@ iptables -F
 
 ### iptables examples
 
-Allow Traffic
+# Allow Traffic
 
 Allow Loopback traffic:
 ```
@@ -111,7 +111,7 @@ iptables -A INPUT -m conntrack --ctstate ESTABLISHED -j ACCEPT
 
 Allow SSH from a specific IP Address:
 ```
-iptables -A INPUT -p tcp -s 15.15.15.0/24 --dport 22 -j ACCEPT
+iptables -A INPUT -p tcp -s 10.10.10.0/24 --dport 22 -j ACCEPT
 ```
 
 Allow Network Segment to Network Segment:
@@ -125,7 +125,7 @@ iptables -A INPUT -p tcp --dport 80,443 -m conntrack --ctstate NEW,ESTABLISHED -
 iptables -A OUTPUT -p tcp --sport 80,443 -m conntrack --ctstate ESTABLISHED -j ACCEPT
 ```
 
-## Block Traffic
+# Block Traffic
 
 Block ingress traffic from an IP Address:
 ```
