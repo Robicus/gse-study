@@ -88,3 +88,62 @@ Turning off Linux firewall:
 ```
 iptables -F
 ```
+
+### iptables examples
+
+Allow Traffic
+
+Allow Loopback traffic:
+```
+iptables -A INPUT -i lo -j ACCEPT
+iptables -A OUTPUT -o lo -j ACCEPT
+```
+
+Allow an IP Address:
+```
+iptables -A INPUT -s <IP Address> -j ACCEPT
+```
+
+Allow Established Connections:
+```
+iptables -A INPUT -m conntrack --ctstate ESTABLISHED -j ACCEPT
+```
+
+Allow SSH from a specific IP Address:
+```
+iptables -A INPUT -p tcp -s 15.15.15.0/24 --dport 22 -j ACCEPT
+```
+
+Allow Network Segment to Network Segment:
+```
+iptables -A FORWARD -i eth1 -o eth0 -j ACCEPT
+```
+
+Allow All Incoming HTTP and HTTPS Traffic:
+```
+iptables -A INPUT -p tcp --dport 80,443 -m conntrack --ctstate NEW,ESTABLISHED -j ACCEPT
+iptables -A OUTPUT -p tcp --sport 80,443 -m conntrack --ctstate ESTABLISHED -j ACCEPT
+```
+
+## Block Traffic
+
+Block ingress traffic from an IP Address:
+```
+iptables -A INPUT -s <IP Address> -j DROP
+```
+
+Block egress traffic from an IP Address:
+```
+iptables -A OUTPUT -s <IP Address> -j DROP
+```
+
+Block connections on a particular Network Interface:
+```
+iptables -A INPUT -i eth0 -s <IP Address> -j DROP
+```
+
+Block SMTP,POP3,IMAP,IMAPS ingress/egress traffic (Hopefully at the perimeter):
+```
+iptables -A INPUT -p tcp --dport 25,110,143,993 -m conntrack --ctstate NEW,ESTABLISHED -j ACCEPT
+iptables -A OUTPUT -p tcp --dport 25,110,143,993 -m conntrack --ctstate ESTABLISHED -j ACCEPT
+```
