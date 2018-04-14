@@ -106,7 +106,8 @@ iptables -A INPUT -s <IP Address> -j ACCEPT
 
 Allow Established Connections:
 ```
-iptables -A INPUT -m conntrack --ctstate ESTABLISHED -j ACCEPT
+iptables -A INPUT -m conntrack --ctstate NEW,ESTABLISHED -j ACCEPT
+iptables -A OUTPUT -m conntrack --ctstate ESTABLISHED -j ACCEPT
 ```
 
 Allow SSH from a specific IP Address:
