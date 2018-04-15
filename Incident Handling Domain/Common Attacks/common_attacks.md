@@ -56,9 +56,9 @@ The act of performing wireless LAN discovery.
 
 Exploitation (per 504) is broken down into 3 sections:
 
-Gaining Access
-Web App Attacks
-Denial of Service
+1. Gaining Access
+2. Web App Attacks
+3. Denial of Service
 
 ## Exploitation - Gaining Access
 
@@ -101,7 +101,9 @@ unshadow /tmp/passwd_copy /tmp/shadow_copy > /tmp/combined
 
 John the Ripper (on Windows)
 
+```
 john-mmx.exe c:\path\to\sam.txt
+```
 
 ### Pass-the-Hash Attacks
 
@@ -251,6 +253,100 @@ Great tools: ZAP, Burp, w3af, and Fiddler.
 ### DoS Suites
 
 ### Distributed DoS (DDoS)
+
+## 4. Keeping Access
+
+### App-level Trojan Horse Backdoor Suites
+
+Tools that allow the attacker complete control over a victim machine:  Poison Ivy, VNC (legit, but often abused), Dameware, Sub7 and others.
+
+### Wrappers and Packers
+
+Wrappers are used to bundle two applications together (one legit and the other typically evil).
+
+Packers are primarily used to thwart reverse engineers - by using techniques like compression so that the executable isn't easily reversed and so that strings aren't as readily available.
+
+### Memory Analysis
+
+### User-Mode Rootkits
+
+#### Linux User-Mode Rootkits
+
+Fontanini rootkit.
+
+#### Windows User-Mode Rootkits
+
+### Kernel-Mode Rootkits
+
+#### Rooty
+#### Avatar Rootkit
+#### Avatar and Alureon
+
+## 5. Covering Tracks
+
+### Covering Tracks in Linux & Unix
+
+#### Hiding Files
+
+```
+ls -a
+echo hideme > ".. "
+ls -a
+```
+
+#### Log Editing
+
+Some interesting log sources in Linux:  /var/log/secure; var/log/messages; var/log/httpd/error_log; /var/log/httpd/access_log
+
+#### Accounting Entry Editing
+
+utmp: File contains info about currently logged in users (/var/log/utmp)
+wtmp: File contains data about past user logins (/var/log/wtmp)
+btmp: File contains bad login entries for failed login attempts (/var/log/btmp)
+lastlog: File shows login name, port, and last login for each user (/var/log/lastlog)
+
+### Covering Tracks in Windows
+
+#### Hiding Files
+
+NTFS Alternate Data Streams (ADS)
+
+```
+type hackerstuff.exe > notepad.exe:steam1.exe
+more < c:\file:stream1
+```
+
+Using LADS
+
+```
+c:\tools\lads\lads\ /S c:\tmp
+```
+
+#### Log Editing
+
+#### Covering Tracks on the Network
+
+#### Reverse HTTP Shells
+
+#### IMCP Tunnels
+
+#### Covert_TCP
+
+```
+covert_tcp -dest 127.0.0.1 -source 127.0.0.1 -source_port 8888 -dest_port 9999 -server -file /tmp/receive/receive.txt
+```
+
+### Steganography
+
+Sample stego tools:
+
+1. Jsteg
+2. MP3Stego
+3. S-Mail
+4. Invisible Secrets
+5. Stash
+6. Hydan
+
 
 
 

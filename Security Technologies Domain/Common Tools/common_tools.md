@@ -261,16 +261,29 @@ run hashdump
 
 ### Volatility
 
-Getting usage and help
+Getting usage and help:
 
 ```
-python vol.py -h
+python vol.py [module] -h
+python vol.py connections -h
 ```
 
 Getting process list:
 
 ```
 python vol.py pslist -f /path/to/memory/dump/mem.dd --profile=Win7SP0x86
+```
+
+Identifying processes by connection:
+
+```
+python vol.py timeliner -f /path/to/memory/dump/mem.dd --profile=Win7SP0x86 | grep ESTABLISHED
+```
+
+Determine command-line invocations:
+
+```
+python vol.py dlllist -p [PID] -f /path/to/memory/dump/mem.dd --profile=Win7SP0x86
 ```
 
 ### Hping3
