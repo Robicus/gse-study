@@ -74,44 +74,43 @@ Business Impact Analysis (BIA) helps determine the maximum tolerable downtime (M
 3. Policy Layer
 
 ### Course of Action Matrix
-
-//==============[]==================[]==================[]================[]================[]==============[]===================\\
-||    PHASE     ||      DETECT      ||       DENY       ||    DISRUPT     ||    DEGRADE     ||   DECEIVE    ||      DESTROY      ||
-|]==============[]==================[]==================[]================[]================[]==============[]===================[|
-||              ||                  ||                  ||                ||                ||              ||                   ||
-||              || IDS/IPS          || IPS              || IPS            || IPS            || HoneyPots    ||                   ||
-|| RECON        || Firewall L7      || Firewalls        || Proxy          || Proxy          || Proxy        || N/A               ||
-||              || Proxy            || ACLs             || Firewall L7    || Firewall L7    || Redirections ||                   ||
-||              || System Logs      ||                  ||                ||                ||              ||                   ||
-||==============||==================||==================||================||================||==============||===================||
-||              || IPS/IDS          || IPS              ||                ||                ||              ||                   ||
-||              || Firewall L7      || Firewalls        || IPS            || IPS            || HoneyPots    || IPS               ||
-|| DELIVERY     || Proxy            || Email Protection || Firewall L7    || Firewall L7    || Proxy        || Email Protections ||
-||              || Perceptive User  || AV               || Endpoint Suite || Endpoint Suite || Redirections || Endpoint Suite    ||
-||              || Endpoint Suite   || ACLs             ||                ||                ||              ||                   ||
-||==============||==================||==================||================||================||==============||===================||
-||              || IDS/IPS          || IPS              ||                ||                ||              ||                   ||
-||              || Firewalls        || Firewalls        || IPS            || IPS            || HoneyPots    || IPS               ||
-|| EXPLOITATION || Email Protection || Email Protection || Firewalls L7   || Firewalls L7   || Proxy        || Email Protection  ||
-||              || Endpoint Suite   || Endpoint Suite   || Endpoint Suite || Endpoint Suite || Redirections || System Logs       ||
-||              || AV               || AV               ||                ||                ||              || Endpoint Suite    ||
-||==============||==================||==================||================||================||==============||===================||
-||              ||                  ||                  ||                ||                ||              ||                   ||
-||              || IDS/IPS          || IPS              || IPS            || IPS            ||              || IPS               ||
-|| INSTALLATION || System Logs      || DEP              || DEP            || DEP            || HoneyPots    || Proxy             ||
-||              || Endpoint Suite   || Endpoint Suite   || Endpoint Suite || Endpoint Suite ||              || Endpoint Suite    ||
-||              || AV               || AV               ||                ||                ||              ||                   ||
-||==============||==================||==================||================||================||==============||===================||
-||              || IDS/IPS          || IDS/IPS          ||                ||                ||              ||                   ||
-||              || Proxy            || Proxy            || IDS/IPS        || IDS/IPS        || HoneyPots    || IPS               ||
-|| C2           || Firewalls        || Firewalls L7     || Proxy          || Proxy          || Proxy        || Proxy             ||
-||              || System Logs      || Endpoint Suite   || Firewalls L7   || Firewalls L7   || Redirections || Endpoint Suite    ||
-||              || Endpoint Suite   || ACLs             || Endpoint Suite || Endpoint Suite ||              ||                   ||
-||==============||==================||==================||================||================||==============||===================||
-||              ||                  || IPS              ||                ||                ||              ||                   ||
-||              || IDS/IPS          || Firewall L7      || IPS            || IPS            ||              ||                   ||
-|| ACTIONS      || Proxy            || DEP              || Firewall L7    || Firewall L7    || HoneyPots    || IPS               ||
-|| OBJECTIVES   || Firewalls        || Endpoint Suite   || DEP            || DEP            || Proxy        || Proxy             ||
-||              || System Logs      || AV               || Endpoint Suite || Endpoint Suite || Redirections || Endpoint Suite    ||
-||              || Endpoint Suite   || ACLs             || AV             || AV             ||              ||                   ||
-\\==============[]==================[]==================[]================[]================[]==============[]===================//
+/--------------|------------------|------------------|----------------|----------------|--------------|-------------------\
+|    PHASE     |      DETECT      |       DENY       |    DISRUPT     |    DEGRADE     |   DECEIVE    |      DESTROY      |
+|--------------|------------------|------------------|----------------|----------------|--------------|-------------------|
+|              |                  |                  |                |                |              |                   |
+|              | IDS/IPS          | IPS              | IPS            | IPS            | HoneyPots    |                   |
+| RECON        | Firewall L7      | Firewalls        | Proxy          | Proxy          | Proxy        | N/A               |
+|              | Proxy            | ACLs             | Firewall L7    | Firewall L7    | Redirections |                   |
+|              | System Logs      |                  |                |                |              |                   |
+|--------------|------------------|------------------|----------------|----------------|--------------|-------------------|
+|              | IPS/IDS          | IPS              |                |                |              |                   |
+|              | Firewall L7      | Firewalls        | IPS            | IPS            | HoneyPots    | IPS               |
+| DELIVERY     | Proxy            | Email Protection | Firewall L7    | Firewall L7    | Proxy        | Email Protections |
+|              | Perceptive User  | AV               | Endpoint Suite | Endpoint Suite | Redirections | Endpoint Suite    |
+|              | Endpoint Suite   | ACLs             |                |                |              |                   |
+|--------------|------------------|------------------|----------------|----------------|--------------|-------------------|
+|              | IDS/IPS          | IPS              |                |                |              |                   |
+|              | Firewalls        | Firewalls        | IPS            | IPS            | HoneyPots    | IPS               |
+| EXPLOITATION | Email Protection | Email Protection | Firewalls L7   | Firewalls L7   | Proxy        | Email Protection  |
+|              | Endpoint Suite   | Endpoint Suite   | Endpoint Suite | Endpoint Suite | Redirections | System Logs       |
+|              | AV               | AV               |                |                |              | Endpoint Suite    |
+|--------------|------------------|------------------|----------------|----------------|--------------|-------------------|
+|              |                  |                  |                |                |              |                   |
+|              | IDS/IPS          | IPS              | IPS            | IPS            |              | IPS               |
+| INSTALLATION | System Logs      | DEP              | DEP            | DEP            | HoneyPots    | Proxy             |
+|              | Endpoint Suite   | Endpoint Suite   | Endpoint Suite | Endpoint Suite |              | Endpoint Suite    |
+|              | AV               | AV               |                |                |              |                   |
+|--------------|------------------|------------------|----------------|----------------|--------------|-------------------|
+|              | IDS/IPS          | IDS/IPS          |                |                |              |                   |
+|              | Proxy            | Proxy            | IDS/IPS        | IDS/IPS        | HoneyPots    | IPS               |
+| C2           | Firewalls        | Firewalls L7     | Proxy          | Proxy          | Proxy        | Proxy             |
+|              | System Logs      | Endpoint Suite   | Firewalls L7   | Firewalls L7   | Redirections | Endpoint Suite    |
+|              | Endpoint Suite   | ACLs             | Endpoint Suite | Endpoint Suite |              |                   |
+|--------------|------------------|------------------|----------------|----------------|--------------|-------------------|
+|              |                  | IPS              |                |                |              |                   |
+|              | IDS/IPS          | Firewall L7      | IPS            | IPS            |              |                   |
+| ACTIONS      | Proxy            | DEP              | Firewall L7    | Firewall L7    | HoneyPots    | IPS               |
+| OBJECTIVES   | Firewalls        | Endpoint Suite   | DEP            | DEP            | Proxy        | Proxy             |
+|              | System Logs      | AV               | Endpoint Suite | Endpoint Suite | Redirections | Endpoint Suite    |
+|              | Endpoint Suite   | ACLs             | AV             | AV             |              |                   |
+\--------------|------------------|------------------|----------------|----------------|--------------|-------------------/
