@@ -162,6 +162,14 @@ The goal of the recovery phase is to put the impacted systems back into producti
 
 The goal of Lessons Learned is to document what happened and improve capabilities.
 
+### Reporting
+
+#### 503 Reporting Tips
+
+"Your report should include what happened, what you believe occurred, who - what IP addresses were involved and perhaps why they attacked and what made it possible for the attack to be successful. Details should be include the IP addresses involved, the services that were attacked, and the time of the attack to include Wireshark packet numbers. Finally, to the best of your ability and knowledge, describe exactly what you believed occurred. The more details that you can supply, the better you support your case, especially if it ends up in prosecution."
+
+
+
 
 
 

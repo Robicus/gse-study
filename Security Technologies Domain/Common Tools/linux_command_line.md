@@ -166,9 +166,47 @@ Writing and quiting a file:
 :wq
 ```
 
+### Linux Command Line Analysis Tools
 
+#### cut
 
+-d: specify delimiter
+-f: specify field
 
+```
+cut -f 3 -d " "
+```
+
+```
+cut -f 1-4 -d "."
+```
+
+#### sort
+
+-n: numeric sort
+-r: reverse sort
+-u: show only unique lines
+
+```
+tcpdump -r capture.pcap -n 'dst port 443' | cut -f3 -d "." | sort -u
+```
+
+#### uniq
+
+-c: counts how many unique lines entries
+
+```
+[...] | sort -u
+```
+
+#### grep
+
+-v: skip if matches pattern
+-i: case insensitive
+
+```
+grep -i "hacker" fileinput
+```
 
 
 
