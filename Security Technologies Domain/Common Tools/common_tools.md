@@ -310,4 +310,46 @@ hping3 [IP Address] -a [spoofed IP] -S
 
 Dumpsec gathers information about a remote host without providing valid authentication; you gain info on registry, file system, and printers; users and groups; policies, rights, and services.
 
+### gpg
+
+gpg is an Encryption and Signing Tool. It can be used to encrypt, decrypt, and generate signatures for documents and emails.
+
+gpg Synopsis:
+```
+gpg [--homedir name] [--options file] [options] command [args]
+```
+
+Examples:
+```
+gpg -se -r Bob file
+```
+  Clear and encrypt for user Bob
+
+```
+gpg --clearsign file
+```
+  Make a clear text signature
+  
+```
+gpg -sb file
+```
+  Make a detached signature
+
+```
+gpg --list-keys user_ID
+```
+  Show keys
+
+```
+gpg --fingerprint user_ID
+```
+  Show Fingerprint
+
+```
+gpg --verify pgpfile
+gpg --verify sigfile[files]
+```
+  Verifty the signature of the file but do not output the data.
+  The second foes is used to deteched signatures, where sigfile is the detached signature and files are the signed data
+
 ### etc...

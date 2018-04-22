@@ -54,5 +54,3 @@ Business Impact Analysis (BIA) helps determine the maximum tolerable downtime (M
 5. Test and Validate the Plan
 6. Modify and Update the Plan
 7. Approve and Implement the Plan
-
-
