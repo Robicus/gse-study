@@ -39,7 +39,7 @@ Statistics > Protocol Hierarchy
 
 ![Protocol Hierarchy](../screenshots/analyze-traffic-wireshark-statistics.PNG?raw=true "Protocol Hierarchy")
 
-Any of the traffic here could be suspicious, but the 'Data' classification under the protocol hierarchy means Wireshark could not apply a dissector because it does not recognize the port number and no heuristic dissector matched the packets. You can right-click and apply as filter for quick and easy further inspection.
+Any of the traffic here could be suspicious, but the 'Data' classification under protocol hierarchy means Wireshark was unable to apply a dissector because it does not a) recognize the port number or b) no heuristic dissector matched the packets. You can right-click on the packets in question and 'apply as filter' for quick and easy analysis.
 
 ![Protocol Hierarchy](../screenshots/protocol_hiearchy_data_class.png?raw=true "Protocol Hierarchy - Data")
 
