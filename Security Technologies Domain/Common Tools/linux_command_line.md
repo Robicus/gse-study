@@ -166,6 +166,23 @@ Writing and quiting a file:
 :wq
 ```
 
+Substitution in vi (in ESC mode). Find each occurrence of 'foo' (in all lines), and replace it with 'bar'.
+
+```
+:%s/foo/bar/g
+```
+or
+
+```
+:1,$s/foo/bar/g
+```
+
+Remove ^M characters while in vi (in ESC mode). To enter ^M, type CTRL-V, then CTRL-M. That is, hold down the CTRL key then press V and M in succession.
+
+```
+%s/^M//g
+```
+
 ### Linux Command Line Analysis Tools
 
 #### cut
@@ -208,6 +225,28 @@ tcpdump -r capture.pcap -n 'dst port 443' | cut -f3 -d "." | sort -u
 grep -i "hacker" fileinput
 ```
 
+#### sed 
 
+Replacement of text in a command or file. Extremely useful when chained together with cut, grep, etc
 
+Delete lines matching pattern
+```
+sed '/pattern/d' file.txt
+```
+
+Replace every occurrence of Nick with John in the report.txt file and dump to STDOUT
+```
+sed 's/Nick/John/g' report.txt
+```
+
+Replace every occurrence of Nick with John from the report.txt file and place the contents in a new file.
+```
+cat report.txt | sed 's/Nick/John/g' > report_new.txt
+```
+
+Use sed to remove the ^M characters. To enter ^M, type CTRL-V, then CTRL-M. That is, hold down the CTRL key then press V and M in succession.
+
+```
+sed -e "s/^M//" filename > newfilename
+```
 
