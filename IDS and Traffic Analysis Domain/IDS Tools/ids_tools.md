@@ -99,6 +99,63 @@ As a result of running Bro against a pcap (.pcap) file, multiple bro files are c
 * weird.log
 * x509.log
 
+### Running Bro with a signature file
+
+```
+bro -r /path/to/.pcap -s /path/to/.sig
+```
+The Bro signature file allows bro to match, and pattern match, network traffic like:
+   - Src and Dst IP Addresses (i.e. 192.168.1.1)
+   - Src and Dst Protocol Numbers (i.e. 8080)
+   - Protocol Names (i.e. tcp)
+   - Event Values (i.e. "Outbound HTTP Traffic")
+   - RegEx values (i.e. /^User-Agent:.*/)
+
+The Signature file uses a rather simple format of 'name {<values>}', here is an example using the previous i.e.'s:
+```
+signature bro.sig {
+  src-ip == 192.168.0.0/16
+  dst-ip == 192.168.0.0/16
+  dst-port == 8080
+  ip-proto == tcp
+  event "Outbound HTTP Traffic"
+  http-request-header /^User-Agent:.*/
+}
+```
+
+Interestingly, the signature format can also support Hex Queries within passing files, using the following format:
+```
+Interest Hex in File {
+   file-magic /x54x52x55x45x56x49x53x49/
+}
+```
+
+### Running Bro with a Notification configuration
+Bro can write the signatures it detects to the notice.log by using the 'NOTICE' configuration:
+```
+bro -r /path/to/.pcap /path/to/.bro
+```
+
+An example how this .bro file is formatted is as follows:
+```
+Bro_Notice_Event {
+  local snet == 192.168.0.0/16
+  
+  if (c$id$orig_h is snet)
+  {
+    if (c$id$resp_h !in snet)
+    {
+      if (c$ip$resp_p == 8080 && name == "USER-AGENT")
+      {
+        NOTICE([$note=Wierd::Activity, $msg=fmt ("Source IP %s, Dest IP/Port %s %s, USER-AGENT content %s",
+        c$id$orig_h,c$id$resp_h,c$id$resp_p,value)
+        ]);
+      }
+    }
+  }
+}
+```
+
 ### Bro Command Line Fu
 
 What connection had the largest number of bytes returned? How many bytes were returned?
