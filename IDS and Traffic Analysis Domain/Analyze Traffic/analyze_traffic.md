@@ -96,7 +96,7 @@ rwfilter suspicious.silk --proto=0-255 --print-stat
 Looking for top (5) senders of data (bytes):
 
 ```
-rwstats --fields sIP --bytes --count=5
+rwstats suspicious.silk --fields sIP --bytes --count=5
 ```
 
 Print the flows which match a filter to the screen:
