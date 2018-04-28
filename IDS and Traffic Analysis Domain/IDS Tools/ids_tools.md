@@ -133,6 +133,11 @@ Interest Hex in File {
 ### Running Bro with a Notification configuration
 Bro can write the signatures it detects to the notice.log by using the 'NOTICE' configuration:
 ```
+bro -r /path/to/.pcap /path/to/.bro
+```
+
+An example how this .bro file is formatted is as follows:
+```
 Bro_Notice_Event {
   local snet == 192.168.0.0/16
   
