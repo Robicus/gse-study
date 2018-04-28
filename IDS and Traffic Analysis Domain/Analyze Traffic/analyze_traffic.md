@@ -57,6 +57,23 @@ It's a good idea to select the radio button "Packet bytes" in order to search fo
 
 Right-click -> Follow TCP/UDP Stream is extremely useful for seeing the entire relationship and flow of packets pertaining to conversations of interest.
 
+### Useful Display Filters and other Tips
+
+Looking at the start of all TCP conversations:
+
+```
+(tcp.flags.syn == 1) and (tcp.flags.ack == 0)
+```
+
+Pro tip: Resulting conversations from the above filter can be color-coded with Wireshark's color feature.
+
+### Carving Files Manually
+
+1. Following the stream in Wireshark
+2. Filter the conversation to represent the specific side of the conversation of interest
+3. Save the file as raw output
+4. Use a file editing tool, like vi on Linux, or WinHex on Windows to carve out any unnecessary bytes
+
 ### Analyzing w/ Tshark
 
 Tshark (terminal wireshark) is a great tool for command-line analysis of packets.

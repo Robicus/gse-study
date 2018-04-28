@@ -57,7 +57,6 @@ grep '\[\*\* alert' | sort | uniq -c | sort -rn
 chaosreader -eq capture.pcap -D /path/to/output
 ```
 
-
 ### Examples of Attack Traffic:
 
 ## Looking at ICMP tunneling:

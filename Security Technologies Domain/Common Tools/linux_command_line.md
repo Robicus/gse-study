@@ -259,7 +259,6 @@ Used to view the beginning or ending entries of files/logs:
 tail /var/log/messages
 ```
 
-
 ### Linux Logging
 
 Most logs are contained under "/var/log"
@@ -269,12 +268,6 @@ Commong logs:
 1. Cron
 2. messages (general purpose syslog)
 3. secure (security related events, like using su to become root)
-
-
-
-
-
-
 
 
 =======
@@ -302,5 +295,24 @@ Use sed to remove the ^M characters. To enter ^M, type CTRL-V, then CTRL-M. That
 
 ```
 sed -e "s/^M//" filename > newfilename
+```
+
+# Other Tools to Master
+
+Here are a list of tools that appear in the lab exercises that are not explictly listed in the GIAC GSE exam objectives (https://www.giac.org/certification/security-expert-gse).
+
+## base64
+
+```
+base64 -d [file containing base64]
+```
+
+## xxd
+
+xxd is used to make a hexdump or to revert hexdumps to something readable.
+The following example reverts (-r) hex into something readable. The "-p" specifies postscript, aka plain hexdump style.
+
+```
+xxd -r -p
 ```
 
