@@ -99,6 +99,16 @@ Looking for top (5) senders of data (bytes):
 rwstats suspicious.silk --fields sIP --bytes --count=5
 ```
 
+Looking for all Unique destination ports used by the UDP Protocol:
+```
+rwfilter suspicious.silk --protocol-17 --pass-stdout | rwuniq --fields dport
+```
+
+Looking for all unique IP address within a target Netrange that had the RST Flag set:
+```
+rwfilter suspicious.silk --cidr=10.0.0.0/8 --rst-flag=1 --pass=stdout | rwuniq --fields sIP
+```
+
 Print the flows which match a filter to the screen:
 ```
 rwfilter file.silk --any-address=192.168.1.1 --aport=80 --pass=stdout | rwcut
