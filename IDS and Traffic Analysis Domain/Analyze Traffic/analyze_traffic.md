@@ -99,6 +99,39 @@ Looking for top (5) senders of data (bytes):
 rwstats --fields sIP --bytes --count=5
 ```
 
+Print the flows which match a filter to the screen:
+```
+rwfilter file.silk --any-address=192.168.1.1 --aport=80 --pass=stdout | rwcut
+```
+
+*NOTE - The 'rwcut' filter at the end will translate the Binary SiLK data to ASCII for printing.
+
+rwfilter requires at least one input filter and one output filter. Examples of each are:
+INPUT FILTERS:
+```
+--saddress=IP_WILDCARD
+--daddress=IP_WILDCARD
+--any-address=IP_WILDCARD
+--sport=INTEGER_LIST
+--dport=INTEGER_LIST
+--aport=INTEGER_LIST
+--protocol=INTEGER_LIST
+--icmp-type=INTEGER_LIST
+--icmp-code=INTEGER_LIST
+```
+OUPUT FILTERS:
+```
+--all-destination=ALL_PATH
+--fail-destination=FAIL_PATH
+--pass-destination=PASS_PATH
+--print-statistics
+--print-statistics=STATS_PATH
+--max-pass-records
+--max-fail-records
+--print-volume-statistics
+--print-volume-statistics=STATS_PATH
+```
+
 ## Scapy
 
 ### Creating a frame with ICMP
