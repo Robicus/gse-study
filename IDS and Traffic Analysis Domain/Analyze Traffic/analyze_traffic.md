@@ -106,7 +106,9 @@ rwfilter file.silk --any-address=192.168.1.1 --aport=80 --pass=stdout | rwcut
 
 *NOTE - The 'rwcut' filter at the end will translate the Binary SiLK data to ASCII for printing.
 
-rwfilter requires at least one input filter and one output filter. Examples of each are:
+rwfilter requires at least one input filter and one output filter.
+Basic Examples which could be helpful are:
+
 INPUT FILTERS:
 ```
 --saddress=IP_WILDCARD
