@@ -10,6 +10,18 @@ Demonstrate a broad knowledge of computer and network attacks
 
 ## 2. Scanning
 
+### NetDiscover
+
+```
+netdiscover -i [interface]
+```
+
+### enum4linux
+
+```
+enum4linux [target IP]
+```
+
 ### SMB Sessions
 
 View SMB sessions (outbound)
@@ -243,6 +255,12 @@ hxxp://www.site.com/index.php?name=<IMG SRC=j&#X41vascript:alert(123)>
 ### Attacking State Maintenance with Web App Manipulation Proxies
 
 Great tools: ZAP, Burp, w3af, and Fiddler.
+
+### Sqlmap
+
+```
+sqlmap -u [URL] --data="[parameters]" -p [paramater]
+```
 
 ## Exploitation - Denial of Service
 

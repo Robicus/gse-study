@@ -103,6 +103,31 @@ ps -eaf
 ps -eaf | grep crypto
 ```
 
+Show all processes belonging to a user in tree form:
+
+```
+ps -u [user] --forest
+```
+
+Top command (functions like an interactive ps):
+
+```
+top
+```
+
+Displaying help in top:
+
+```
+h
+````
+
+Killing a process in top:
+
+```
+k
+[enter PID]
+```
+
 ### Changing IP address and networking data
 
 ```
@@ -207,6 +232,32 @@ tcpdump -r capture.pcap -n 'dst port 443' | cut -f3 -d "." | sort -u
 ```
 grep -i "hacker" fileinput
 ```
+
+#### Head and Tail
+
+Used to view the beginning or ending entries of files/logs:
+
+```
+tail /var/log/messages
+```
+
+
+### Linux Logging
+
+Most logs are contained under "/var/log"
+
+Commong logs:
+
+1. Cron
+2. messages (general purpose syslog)
+3. secure (security related events, like using su to become root)
+
+
+
+
+
+
+
 
 
 
