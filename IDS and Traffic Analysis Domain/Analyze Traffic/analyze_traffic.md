@@ -160,7 +160,7 @@ OUPUT FILTERS:
 Saving a created packet to disk:
 
 ```
-wrpcap("/tmp/icmp.pcap". frame)
+wrpcap("/tmp/icmp.pcap", frame)
 ```
 
 Send crafted packet:
