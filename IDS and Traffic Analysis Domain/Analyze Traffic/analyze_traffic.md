@@ -113,7 +113,59 @@ rwfilter suspicious.silk --proto=0-255 --print-stat
 Looking for top (5) senders of data (bytes):
 
 ```
-rwstats --fields sIP --bytes --count=5
+rwstats suspicious.silk --fields sIP --bytes --count=5
+```
+
+Looking for all Unique destination ports used by the UDP Protocol:
+```
+rwfilter suspicious.silk --protocol-17 --pass-stdout | rwuniq --fields dport
+```
+
+Looking for all unique IP address within a target Netrange that had the RST Flag set:
+```
+rwfilter suspicious.silk --cidr=10.0.0.0/8 --rst-flag=1 --pass=stdout | rwuniq --fields sIP
+```
+
+Looking for traffic that is from an IP Address, but NOT from specific protocols (TCP, UDP ICMP):
+```
+rwfilter <file.silk> --protocol=1,6,17 --fail=stdout | rwfilter --inut-pipe=stdin --saddress=<ip address> --pass=stdout
+```
+*Note - The method to filter out specific traffic, is created by directly filtering for this traffic and to print out everything that DIDNOT match "--fail==stdout', then pipe all of that traffic into a new rwfilter using "--input-pipe=stdin" and specifying the new filter you wish to select.
+
+
+Print the flows which match a filter to the screen:
+```
+rwfilter file.silk --any-address=192.168.1.1 --aport=80 --pass=stdout | rwcut
+```
+
+*NOTE - The 'rwcut' filter at the end will translate the Binary SiLK data to ASCII for printing.
+
+rwfilter requires at least one input filter and one output filter.
+Basic Examples which could be helpful are:
+
+INPUT FILTERS:
+```
+--saddress=IP_WILDCARD
+--daddress=IP_WILDCARD
+--any-address=IP_WILDCARD
+--sport=INTEGER_LIST
+--dport=INTEGER_LIST
+--aport=INTEGER_LIST
+--protocol=INTEGER_LIST
+--icmp-type=INTEGER_LIST
+--icmp-code=INTEGER_LIST
+```
+OUPUT FILTERS:
+```
+--all-destination=ALL_PATH
+--fail-destination=FAIL_PATH
+--pass-destination=PASS_PATH
+--print-statistics
+--print-statistics=STATS_PATH
+--max-pass-records
+--max-fail-records
+--print-volume-statistics
+--print-volume-statistics=STATS_PATH
 ```
 
 ## Scapy
@@ -125,7 +177,7 @@ rwstats --fields sIP --bytes --count=5
 Saving a created packet to disk:
 
 ```
-wrpcap("/tmp/icmp.pcap". frame)
+wrpcap("/tmp/icmp.pcap", frame)
 ```
 
 Send crafted packet:
