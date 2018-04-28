@@ -109,6 +109,13 @@ Looking for all unique IP address within a target Netrange that had the RST Flag
 rwfilter suspicious.silk --cidr=10.0.0.0/8 --rst-flag=1 --pass=stdout | rwuniq --fields sIP
 ```
 
+Looking for traffic that is from an IP Address, but NOT from specific protocols (TCP, UDP ICMP):
+```
+rwfilter <file.silk> --protocol=1,6,17 --fail=stdout | rwfilter --inut-pipe=stdin --saddress=<ip address> --pass=stdout
+```
+*Note - The method to filter out specific traffic, is created by directly filtering for this traffic and to print out everything that DIDNOT match "--fail==stdout', then pipe all of that traffic into a new rwfilter using "--input-pipe=stdin" and specifying the new filter you wish to select.
+
+
 Print the flows which match a filter to the screen:
 ```
 rwfilter file.silk --any-address=192.168.1.1 --aport=80 --pass=stdout | rwcut
