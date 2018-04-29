@@ -57,6 +57,13 @@ grep '\[\*\* alert' | sort | uniq -c | sort -rn
 chaosreader -eq capture.pcap -D /path/to/output
 ```
 
+Note: chaosreader can only work with the pcap file type and not the pcapng file type. If you need to convert a pcapng file to pcap, use the editcap command below. 
+
+```
+editcap <pcapng file> <new pcap filename> -F pcap
+editcap capture.pcapng capture.pcap -F pcap
+```
+
 ### Examples of Attack Traffic:
 
 ## Looking at ICMP tunneling:
