@@ -4,13 +4,10 @@
 
 Demonstrate proficiency using common Open Source IDS tools including Snort, tcpdump, and Wireshark
 
-## tcpdump Cheat Sheet
+## Snort
 
-http://packetlife.net/media/library/12/tcpdump.pdf
+Running Snort against a pcap w/ a config:
 
-## Snort Usage and Common Flags
-
-Example:
 ```
 snort -r cmdexe.pcap -K none -A console -q -c snort.conf1
 ```
@@ -21,7 +18,7 @@ snort -r cmdexe.pcap -K none -A console -q -c snort.conf1
 -q quiet mode, doesn't show banner nor status report
 -c specified the rules
 
-## Snort Rule Writing Tips
+### Snort Rule Writing Tips
 
 The generic format for writing rules is:
 
@@ -34,7 +31,7 @@ Example:
 alert udp $EXTERNAL_NET any -> $HOME_NET 67 (msg:"MISC bootp hardware address length overflow; content:"|01|"; depth:1; byte_test:1,>,6,2; sid:44554455;
 ```
 
-## Snort Signature Example
+### Snort Signature Example
 
 ![Snort Sig Example](../screenshots/snort-sig-example.PNG?raw=true "Snort Sig Example")
 

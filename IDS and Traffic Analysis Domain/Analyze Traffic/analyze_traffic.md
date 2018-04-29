@@ -8,19 +8,11 @@ Demonstrate the ability to decipher the contents of packet capture headers.
 
 1. Offsets from the beginning of the packet start with 0
 2. Four bits = 1 hex character
-3. One bytes = 2 hex characters
+3. One byte = 2 hex characters
 4. Fields can be any length (one bit, many bytes, fixed length or variable length)
 5. Fields in one protocol identify the length and contents of others
 
-Source: 401.1 pg. 152
-
 ## Analyze Traffic w/ Wireshark
-
-### Great tips for organizing views/columns/data in Wireshark
-
-http://www.malware-traffic-analysis.net/tutorials/wireshark/index.html
-
-Introduction to Wireshark: Sample Traffic Analysis - Book 1, Page 49
 
 ### Loading Wireshark
 
@@ -43,7 +35,7 @@ Any of the traffic here could be suspicious, but the 'Data' classification under
 
 ![Protocol Hierarchy](../screenshots/protocol_hiearchy_data_class.png?raw=true "Protocol Hierarchy - Data")
 
-### Finding a packet
+### Finding a Packet
 
 ```
 Edit > Find Packet ... (or Ctrl + F)
@@ -53,9 +45,11 @@ It's a good idea to select the radio button "Packet bytes" in order to search fo
 
 ![Find Packet](../screenshots/analyze-traffic-find-packet.PNG?raw=true "Find Packet")
 
+Tip: Use the CTRL+N keyboard shortcut to cycle through relevant matches (CTRL+N = "Next packet").
+
 ### Following Streams
 
-Right-click -> Follow TCP/UDP Stream is extremely useful for seeing the entire relationship and flow of packets pertaining to conversations of interest.
+Right-click -> Follow TCP/UDP/HTTP Stream is extremely useful for seeing the entire relationship and flow of packets pertaining to conversations of interest.
 
 ### Useful Display Filters and other Tips
 
@@ -65,7 +59,7 @@ Looking at the start of all TCP conversations:
 (tcp.flags.syn == 1) and (tcp.flags.ack == 0)
 ```
 
-Pro tip: Resulting conversations from the above filter can be color-coded with Wireshark's color feature.
+Pro tip: Resulting conversations from the above filter can be color-coded with Wireshark's color feature, to allow for quicker identification of distinct conversations and streams.
 
 Looking for ARP and gratuitous ARP:
 
@@ -88,14 +82,19 @@ ip.hdr_len > 20
 
 ### Carving Files Manually
 
-1. Following the stream in Wireshark
+1. Follow the stream in Wireshark
 2. Filter the conversation to represent the specific side of the conversation of interest
 3. Save the file as raw output
 4. Use a file editing tool, like vi on Linux, or WinHex on Windows to carve out any unnecessary bytes
+5. Save the modified file and perform anyh additional analysis
 
-### Analyzing w/ Tshark
+### Wireshark Tips and Resources
 
-Tshark (terminal wireshark) is a great tool for command-line analysis of packets.
+http://www.malware-traffic-analysis.net/tutorials/wireshark/index.html
+
+## Analyze Traffic w/ Tshark
+
+Tshark (terminal Wireshark) is a great tool for command-line analysis of packets.
 
 Reading packet captures without name resolutions:
 
@@ -121,7 +120,24 @@ Following streams with tshark:
 tshark -n -r [capture.pcap] -Y 'tcp.stream == [stream id]' -z follow,tcp,ascii,60
 ```
 
-### Working with SiLK
+## Analyze Traffic w/ tcpdump
+
+### tcpdump Filters w/ Examples
+
+Example 1: Showing only packets with the source IP of 127.0.0.1 with only the ACK bit set:
+
+```
+tcpdump -nt -r tcpdump.pcap 'src host 127.0.0.1 and tcp[13] = 0x10'
+```
+
+Example 2: Showing only packets with the destination IP of 127.0.0.1 with either the ACK or RST flags set:
+
+```
+tcpdump -nt -r tcpdump.pcap 'src host 127.0.0.1 and tcp[13] = 0x10'
+tcpdump -nt -r tcpdump.pcap 'dst host 127.0.0.1 and tcp[13] & 0x14 != 0
+```
+
+## Traffic Analysis / SiLK
 
 Counting the number of records:
 
@@ -149,7 +165,7 @@ Looking for traffic that is from an IP Address, but NOT from specific protocols 
 ```
 rwfilter <file.silk> --protocol=1,6,17 --fail=stdout | rwfilter --inut-pipe=stdin --saddress=<ip address> --pass=stdout
 ```
-*Note - The method to filter out specific traffic, is created by directly filtering for this traffic and to print out everything that DIDNOT match "--fail==stdout', then pipe all of that traffic into a new rwfilter using "--input-pipe=stdin" and specifying the new filter you wish to select.
+*Note - The method to filter out specific traffic, is created by directly filtering for this traffic and to print out everything that DID NOT match "--fail==stdout', then pipe all of that traffic into a new rwfilter using "--input-pipe=stdin" and specifying the new filter you wish to select.
 
 
 Print the flows which match a filter to the screen:
@@ -160,7 +176,7 @@ rwfilter file.silk --any-address=192.168.1.1 --aport=80 --pass=stdout | rwcut
 *NOTE - The 'rwcut' filter at the end will translate the Binary SiLK data to ASCII for printing.
 
 rwfilter requires at least one input filter and one output filter.
-Basic Examples which could be helpful are:
+Basic examples which could be helpful are:
 
 INPUT FILTERS:
 ```
@@ -216,10 +232,14 @@ Windows NT 6.1 correlates to Windows 7.
 
 List of Windows NT versions to OS:
 
-6.0	Windows Vista	
-6.1 Windows 
+6.0	Windows Vista
+
+6.1 Windows
+
 6.2	Windows 8
+
 6.3	Windows 8.1
+
 10.0 Windows 10 / Server 2016
 
 
