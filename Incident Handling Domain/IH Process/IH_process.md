@@ -4,7 +4,7 @@
 
 Demonstrate mastery of the Incident Handling process.
 
-### Incident Handling Fundamentals
+## Incident Handling Fundamentals
 
 What is an "incident"?
 
@@ -14,7 +14,7 @@ What is an "event"?
 
 An event is any observable occurrence in a system and/or network.
 
-### 6 Phases of Incident Response (IR)
+## 6 Phases of Incident Response (IR)
 
 1. Preparation
 2. Identification
@@ -23,7 +23,7 @@ An event is any observable occurrence in a system and/or network.
 5. Recovery
 6. Lessons Learned
 
-### 1. Preparation
+## 1. Preparation
 
 The goal of the preparation phase is to get our team ready to handle incidents.
 
@@ -36,7 +36,7 @@ A few tips to remember when conducting incident response:
 - Maintain excellent notes - always think about the "who, what, when, where, and how".
 - "If you are going too fast to take notes, you are going too fast!"
 
-### 2. Identification - Technical - Windows
+## 2. Identification - Technical - Windows
 
 Unusual network usage - looking at file shares, open sessions, and NetBIOS activity:
 
@@ -117,7 +117,7 @@ Looking at Unusual Accounts:
 net localgroup administrators
 ```
 
-### Containment
+## Containment
 
 The goal of containment is to stop the bleeding - prevent the attacker from getting any deeper into the impacted system, or spreading to other systems.
 
@@ -127,7 +127,7 @@ Containment sub-phases:
 2. System back-up
 3. Long-term containment
 
-#### Containment - Short term:
+### Containment - Short term:
 
 Possible actions for short-term:
 
@@ -135,7 +135,7 @@ Possible actions for short-term:
 - Pull the power cable (note: will lose volatile memory)
 - Isolate the switch port / VLAN
 
-#### Containment - Long term:
+### Containment - Long term:
 
 Possible actions for long-term:
 
@@ -146,7 +146,7 @@ Possible actions for long-term:
 - Remove accounts used by the attacker
 - etc.
 
-### Eradication
+## Eradication
 
 The goal of eradication is to get rid of the attacker's artificats on the machine.
 
@@ -154,17 +154,17 @@ The goal of eradication is to get rid of the attacker's artificats on the machin
 - Removing malicious software
 - Improving defenses
 
-### Recovery
+## Recovery
 
 The goal of the recovery phase is to put the impacted systems back into production in a safe manner.
 
-### Lessons Learned
+## Lessons Learned
 
 The goal of Lessons Learned is to document what happened and improve capabilities.
 
-### Reporting
+## Reporting
 
-#### 503 Reporting Tips
+### 503 Reporting Tips
 
 "Your report should include what happened, what you believe occurred, who - what IP addresses were involved and perhaps why they attacked and what made it possible for the attack to be successful. Details should be include the IP addresses involved, the services that were attacked, and the time of the attack to include Wireshark packet numbers. Finally, to the best of your ability and knowledge, describe exactly what you believed occurred. The more details that you can supply, the better you support your case, especially if it ends up in prosecution."
 
