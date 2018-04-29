@@ -109,10 +109,3 @@ List current directory and files
 dir
 ```
 
-
-
-
-
-
-
-

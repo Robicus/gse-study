@@ -96,7 +96,7 @@ cat [file] | grep "pattern" -A [number of lines]
 cat [file] | grep "pattern" -B [number of lines]
 ```
 
-### Viewing and Searching Processes
+## Viewing and Searching Processes
 
 ```
 ps -eaf
@@ -128,13 +128,13 @@ k
 [enter PID]
 ```
 
-### Changing IP address and networking data
+## Changing IP address and networking data
 
 ```
 ifconfig [interface] [IP Address] netmask [netmask]
 ```
 
-### Working with tar and file compression
+## Working with tar and file compression
 
 tar a folder/file:
 
@@ -164,8 +164,7 @@ bzip2
 
 unbiz2
 
-
-### Working with vim text editor
+## Working with vim text editor
 
 Vim (vi improved) is a powerful and popular text editor.
 
@@ -208,9 +207,9 @@ Remove ^M characters while in vi (in ESC mode). To enter ^M, type CTRL-V, then C
 :%s/^M//g
 ```
 
-### Linux Command Line Analysis Tools
+## Linux Command Line Analysis Tools
 
-#### cut
+### cut
 
 -d: specify delimiter
 -f: specify field
@@ -223,7 +222,7 @@ cut -f 3 -d " "
 cut -f 1-4 -d "."
 ```
 
-#### sort
+### sort
 
 -n: numeric sort
 -r: reverse sort
@@ -233,7 +232,7 @@ cut -f 1-4 -d "."
 tcpdump -r capture.pcap -n 'dst port 443' | cut -f3 -d "." | sort -u
 ```
 
-#### uniq
+### uniq
 
 -c: counts how many unique lines entries
 
@@ -241,7 +240,7 @@ tcpdump -r capture.pcap -n 'dst port 443' | cut -f3 -d "." | sort -u
 [...] | sort -u
 ```
 
-#### grep
+### grep
 
 -v: skip if matches pattern
 -i: case insensitive
@@ -251,7 +250,7 @@ grep -i "hacker" fileinput
 ```
 
 <<<<<<< HEAD
-#### Head and Tail
+### Head and Tail
 
 Used to view the beginning or ending entries of files/logs:
 
@@ -259,7 +258,7 @@ Used to view the beginning or ending entries of files/logs:
 tail /var/log/messages
 ```
 
-### Linux Logging
+## Linux Logging
 
 Most logs are contained under "/var/log"
 
@@ -269,9 +268,8 @@ Commong logs:
 2. messages (general purpose syslog)
 3. secure (security related events, like using su to become root)
 
-
 =======
-#### sed 
+### sed 
 >>>>>>> cd947ef9e8dc517e74bc25e03f08ad14de1434ac
 
 Replacement of text in a command or file. Extremely useful when chained together with cut, grep, etc
@@ -297,17 +295,17 @@ Use sed to remove the ^M characters. To enter ^M, type CTRL-V, then CTRL-M. That
 sed -e "s/^M//" filename > newfilename
 ```
 
-# Other Tools to Master
+## Other Tools to Master
 
 Here are a list of tools that appear in the lab exercises that are not explictly listed in the GIAC GSE exam objectives (https://www.giac.org/certification/security-expert-gse).
 
-## base64
+### base64
 
 ```
 base64 -d [file containing base64]
 ```
 
-## xxd
+### xxd
 
 xxd is used to make a hexdump or to revert hexdumps to something readable.
 The following example reverts (-r) hex into something readable. The "-p" specifies postscript, aka plain hexdump style.
