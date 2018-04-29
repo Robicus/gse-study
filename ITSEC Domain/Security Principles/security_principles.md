@@ -4,7 +4,7 @@
 
 Consistently demonstrate and practice bedrock security principles.
 
-### Defense-in-Depth:
+## Defense-in-Depth:
 
 ## Risk = Threats X Vulnerabilities
 

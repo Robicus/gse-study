@@ -80,7 +80,6 @@ Require network level authentication
 Get latest version of thin client software from Microsoft
 Use smart card authentication for single sign-one
 
-
 ### Windows Passwords
 
 #### LAN Manager (LANMAN)
@@ -89,3 +88,4 @@ Old Windows (NT) password schema that is insanely easy to crack.
 
 - 14 character lenght
 - Splits password into two 7 character strings
+
