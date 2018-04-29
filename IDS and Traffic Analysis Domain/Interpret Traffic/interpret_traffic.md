@@ -1,4 +1,4 @@
-# Analyze Traffic
+# Interpret Traffic
 
 ## Exam Objective
 
