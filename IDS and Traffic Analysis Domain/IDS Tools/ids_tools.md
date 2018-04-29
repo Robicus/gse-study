@@ -78,6 +78,24 @@ tcpdump -X
 
 ## Bro
 
+### Start Bro
+
+```
+broctl [as root]
+```
+
+```
+install
+```
+
+```
+start
+```
+
+```
+status
+```
+
 ### Running Bro in Readback Mode
 
 ```
@@ -98,6 +116,16 @@ As a result of running Bro against a pcap (.pcap) file, multiple bro files are c
 * syslog.log
 * weird.log
 * x509.log
+
+### conn.log important fields
+
+id.orig_h = source IP
+id.orig_p = source port
+id.resp_h = destination IP
+id.resp_p = destinaton port
+proto = protocol
+orig_bytes = source bytes
+resp_bytes = destination bytes
 
 ### Running Bro with a signature file
 
@@ -131,7 +159,9 @@ Interest Hex in File {
 ```
 
 ### Running Bro with a Notification configuration
+
 Bro can write the signatures it detects to the notice.log by using the 'NOTICE' configuration:
+
 ```
 bro -r /path/to/.pcap /path/to/.bro
 ```
@@ -164,23 +194,25 @@ What connection had the largest number of bytes returned? How many bytes were re
 cat conn.log | bro-cut id.org_h id.resp_h id.resp_p resp_bytes | sort -k 4 -rn | head -10
 ```
 
-### Start Bro
+## OSSEC
+
+OSSEC rules files are found in /var/ossec/rules; and decoder files are found in /var/ossec/etc.
+
+Viewing alert reports:
 
 ```
-broctl [as root]
-```
-
-```
-install
-```
-
-```
-start
+cat /var/ossec/logs/alerts/alerts.log | ossec-d
 ```
 
 ```
-status
+cat /var/ossec/logs/alerts/alerts.log | ossec-d -f level 7
 ```
+
+```
+cat secure.log | ossec-logtest -a | ossec-reportd
+```
+
+
 
 
 

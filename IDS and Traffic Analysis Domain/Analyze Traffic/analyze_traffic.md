@@ -67,6 +67,25 @@ Looking at the start of all TCP conversations:
 
 Pro tip: Resulting conversations from the above filter can be color-coded with Wireshark's color feature.
 
+Looking for ARP and gratuitous ARP:
+
+```
+arp
+arp.isgratuitous
+```
+
+Looking for ICMP replies only:
+
+```
+icmp.type == 0
+```
+
+Looking for IP options:
+
+```
+ip.hdr_len > 20
+```
+
 ### Carving Files Manually
 
 1. Following the stream in Wireshark
