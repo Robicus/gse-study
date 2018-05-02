@@ -117,6 +117,54 @@ Looking at Unusual Accounts:
 net localgroup administrators
 ```
 
+## 2. Identification - Technical - *Linux
+
+Running processes:
+
+```
+ps aux
+```
+
+Show all filesd and ports:
+
+```
+lsof -p [pid]
+```
+
+Unusual files:
+
+```
+find / -uid 0 -perm -4000 -print
+find / -size +10000k -print
+find / -name " " -print
+```
+
+```
+netstat -nap
+```
+
+Unusual scheduled tasks:
+
+```
+crontab -u rooot -l
+cat /etc/cronttab
+ls /etc/cron.*
+```
+
+Unusual accounts:
+
+```
+sort -nk3 -t: /etc/passwd | less
+```
+
+Others:
+
+```
+uptime
+free
+df
+```
+
 ## Containment
 
 The goal of containment is to stop the bleeding - prevent the attacker from getting any deeper into the impacted system, or spreading to other systems.
